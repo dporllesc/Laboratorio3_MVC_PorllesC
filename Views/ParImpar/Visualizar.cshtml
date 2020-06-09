@@ -1,0 +1,116 @@
+﻿@model Laboratorio3_MVC_PorllesC.Models.ClsParImpar
+@{
+    Layout = null;
+    string valor = "X";
+    int Pares = 0;
+    int ImPares = 0;
+    int PromParesC = 0;
+    int PromImParesC = 0;
+    int TotalCuadrados = 0;
+    int TotalCubos = 0;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Visualizar</title>
+</head>
+<body>
+    <div>
+        <h1>Numeros Pares e Impares</h1>
+        <br /><br />
+              <table border="1px">
+                  <tr>
+                      <td>Numero</td>
+                      <td>Par</td>
+                      <td>Impar</td>
+                      <td>Cuadrado</td>
+                      <td>Cubo</td>
+                  </tr>
+                  @{
+                      int ParesCuadrados = 0;
+                      int TotalParesCuadrados = 0;
+                      int ImParesCuadrados = 0;
+                      int TotalImParesCuadrados = 0;
+
+                      for(int i =1; i <= Model.numero; i++)
+                      {
+                          TotalCuadrados += (i * i);
+                          TotalCubos += (i * i * i);
+
+                          if(i%2==0)
+                          {
+                              Pares++;
+                          }
+                          else
+                          {
+                              ImPares++;
+                          }
+                          if((i*i)% 2 == 0)
+                          {
+                              ParesCuadrados++;
+                              TotalParesCuadrados += (i * i);
+                          }
+                          else
+                          {
+                              ImParesCuadrados++;
+                              TotalImParesCuadrados += (i * i * i);
+                          }
+                      <tr>
+                          <td>@i</td>
+                          <td align="center">@if (i % 2 == 0) {@valor; }</td>
+                          <td align="center">@if (i % 2 != 0) {@valor;}</td>
+                          <td>@(i*i)</td>
+                          <td>@(i*i*i)</td>
+                      </tr>
+                      }
+                      if(ParesCuadrados != 0 && ImParesCuadrados != 0)
+                      {
+                          PromParesC = TotalParesCuadrados / ParesCuadrados;
+                          PromImParesC = TotalImParesCuadrados / ImParesCuadrados;
+                      }
+                  }
+
+              </table>
+                <br /><br />
+
+                      <table border="1px">
+                          <tr>
+                              <td>Resultado</td>
+                              <td>Cantidad</td>
+                          </tr>
+
+                          <tr>
+                              <td>Cantidad de Pares</td>
+                              <td>@Pares</td>
+                          </tr>
+                          <tr>
+                              <td>Cantidad de ImPares</td>
+                              <td>@ImPares</td>
+                          </tr>
+
+                          <tr>
+                              <td>Promedio de Cuadrado Pares</td>
+                              <td>@PromParesC</td>
+                          </tr>
+                          <tr>
+                              <td>Promedio de Cubos ImPares</td>
+                              <td>@PromImParesC</td>
+                          </tr>
+
+                          <tr>
+                              <td>Suma de Cuadrados</td>
+                              <td>@TotalCuadrados</td>
+                          </tr>
+
+                          <tr>
+                              <td>Suma de Cubos</td>
+                              <td>@TotalCubos</td>
+                          </tr>
+
+                      </table>
+    </div>
+</body>
+</html>

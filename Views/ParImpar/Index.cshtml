@@ -1,0 +1,28 @@
+﻿@model Laboratorio3_MVC_PorllesC.Models.ClsParImpar
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <div> 
+        <h1>Numeros Pares e Impares</h1>
+        <br /><br />
+        @using (Html.BeginForm("Visualizar","ParImpar", FormMethod.Post))
+        {
+            <div>
+                @Html.Label("Ingrese Numero: ")
+                @Html.TextBoxFor(model => model.numero)
+            </div>
+            <br /><br />
+            <button>Generar</button>
+        }
+    </div>
+</body>
+</html>

@@ -1,0 +1,47 @@
+﻿@model Laboratorio3_MVC_PorllesC.Models.ClsProducto
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>RealizarVenta</title>
+</head>
+<body>
+    <div>
+        <h1>Venta de Productos</h1>
+        <br /><br />
+        @using (Html.BeginForm("RealizarVenta", "Producto", FormMethod.Post))
+        {
+            <div>
+                <div>
+                    @Html.CheckBoxFor(model => model.productoWebCam, "--") Web Cam
+                </div>
+                <div>
+                    @Html.CheckBoxFor(model => model.productoDiscoDuro, "--") Disco Duro
+                </div>
+                <div>
+                    @Html.CheckBoxFor(model => model.productoAudifono, "--") Audifono
+                </div>
+                <div>
+                    @Html.CheckBoxFor(model => model.productoTeclado, "--") Teclado
+                </div>
+            </div>
+
+            <div>
+                <label>Subtotal S/. <b>@Model.subtotal</b></label><br />
+                <label>IGV S/. <b>@Model.igv</b></label><br />
+                <label>Total S/. <b>@Model.total</b></label><br />
+            </div>
+            <br />
+            <div>
+                <button>Calcular </button>
+            </div>
+
+        }
+    </div>
+</body>
+</html>
